@@ -9,7 +9,12 @@ for menor que 2, retorne uma string vazia.
 
 def both_ends(s):
     # +++ SUA SOLUÇÃO +++
-    return
+    if len(s) <= 2:
+        return ''
+    inicio = s[:2]
+    fim = s[-2:]
+    s = inicio+fim
+    return s
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
