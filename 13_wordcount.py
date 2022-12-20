@@ -57,6 +57,32 @@ import sys
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
+def read(filename):
+    with open(filename, 'r') as a:
+        dic = {}
+        str = a.read().lower()
+        for i in str.split():
+            if i in dic:
+                dic[i] += 1
+            else:
+                dic[i] = 1
+        list_of_tuples = zip(dic.keys(), dic.values())
+        list_of_tuples = list(list_of_tuples)
+    return list_of_tuples
+
+def print_words(filename):
+    list_of_tuples = read(filename)
+    list_of_tuples = sorted(list_of_tuples, key=lambda i: i[0])
+    for i in list_of_tuples:
+        print(f'{i[0]} {i[1]}')
+
+def print_top(filename):
+    list_of_tuples = read(filename)
+    list_of_tuples = sorted(list_of_tuples, key=lambda i: i[1], reverse=True)
+    for i in list_of_tuples[:20]:
+        print(f'{i[0]} {i[1]}')
+
+
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
